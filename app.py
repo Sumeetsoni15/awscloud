@@ -6,7 +6,7 @@ import requests
 
 app = Flask(__name__)
 app.secret_key = 'abcdefghijkl'
-engine = create_engine('postgresql://postgres:postgres@localhost:6543/lecture')
+engine = create_engine('postgresql://postgres:postgres@localhost:5432/lecture')
 engine.connect()
 db = scoped_session(sessionmaker(bind=engine))
 
@@ -133,7 +133,8 @@ def logout():
     return render_template("index1.html", message="Logout Successful")
 
 
-
+if __name__ == "__main__":
+    app.run(host="0.0.0.0",port=80)
 
 
 

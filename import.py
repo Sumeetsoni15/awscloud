@@ -4,7 +4,7 @@ import csv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-engine = create_engine('postgresql://postgres:postgres@localhost:6543/lecture')
+engine = create_engine('postgresql://postgres:postgres@localhost:5432/lecture')
 engine.connect()
 db = scoped_session(sessionmaker(bind=engine))
 
