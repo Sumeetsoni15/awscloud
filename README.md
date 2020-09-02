@@ -84,7 +84,7 @@ CREATE TABLE BOOK_REVIEW(ISBN VARCHAR NOT NULL,USERNAME VARCHAR NOT NULL,REVIEW 
 #### Step 7:Upload Refrence data in table 'BOOKS' created in step 6
 
 There is a file name as ‘book.csv’ in project folder you need to upload data of that csv in ‘BOOKS’ table you create in postgres
-
+```bash
 sudo -u postgres psql
  
 postgres-# \c lecture
@@ -92,7 +92,7 @@ You are now connected to database "lecture" as user "postgres".
 lecture-# \copy BOOKS FROM '/var/www/ProjectBook/books.csv' DELIMITER ',' CSV
 COPY 5000
 lecture-#
-
+```
 ----------------------------------------------------------------
 
 
