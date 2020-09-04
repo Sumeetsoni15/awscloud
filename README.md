@@ -1,3 +1,7 @@
+### When you host the application- it should look like below AWS hosted solution.
+
+http://18.202.212.88/
+
 #### Step 1 - Setup git and Clone 
 
 ### Use below image for installation:
