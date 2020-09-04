@@ -38,6 +38,8 @@ http://18.202.212.88/
 
 
 ```bash
+WSGISocketPrefix /var/run/httpd  
+
 <VirtualHost *>
    ServerName books.com
    WSGIDaemonProcess book user=ec2-user group=ec2-user threads=5 home=/var/www/ProjectBook
