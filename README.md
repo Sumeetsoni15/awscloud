@@ -78,6 +78,7 @@ sudo service httpd start
 
 
 ##### Setup
+####	Below part base on AMI Chosen 
 
 ```bash
 amazon-linux-extras install postgresql10 vim epel
@@ -85,8 +86,6 @@ yum install -y postgresql-server postgresql-devel
 /usr/bin/postgresql-setup –-initdb
 
 ```
-
-####	Highlighted part base on AMI Chosen 
 ##### Start
 ```bash
 systemctl enable postgresql
