@@ -76,18 +76,58 @@ sudo service httpd start
 
 #### Step 6:Create database and tables on DB instance
 
+
+##### Setup
+
 ```bash
-create database lecture;
-CREATE TABLE USERDATA (FNAME VARCHAR NOT NULL , LNAME VARCHAR NOT NULL , EMAIL TEXT NOT NULL ,USERNAME VARCHAR NOT NULL UNIQUE , PASSWORD TEXT NOT NULL);
-CREATE TABLE BOOKS (ISBN VARCHAR NOT NULL UNIQUE,TITLE VARCHAR NOT NULL,AUTHOR VARCHAR NOT NULL,PUBYEAR INTEGER NOT NULL);
-CREATE TABLE BOOK_RATING(ISBN VARCHAR NOT NULL ,USERNAME VARCHAR NOT NULL ,RATING INTEGER NOT NULL);
-CREATE TABLE BOOK_REVIEW(ISBN VARCHAR NOT NULL,USERNAME VARCHAR NOT NULL,REVIEW TEXT NOT NULL);
+amazon-linux-extras install postgresql10 vim epel
+yum install -y postgresql-server postgresql-devel
+/usr/bin/postgresql-setup –-initdb
+
+```
+
+####	Highlighted part base on AMI Chosen 
+##### Start
+```bash
+systemctl enable postgresql
+systemctl start postgresql
+systemctl status postgresql
+```
+-----
+```bash
+cd /var/lib/pgsql/data
+[root@ip-10-0-1-162 data]# vi  pg_hba.conf 
+Replace the ‘ident’ with ‘trust’
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            ident
+# IPv6 local connections:
+host    all             all             ::1/128                 ident
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     peer
+host    replication     all             127.0.0.1/32            ident
+host    replication     all             ::1/128                 ident
+
+service postgresql restart
+sudo -u postgres psql
+postgres=# create database lecture;
+postgres=# \c lecture    --You are now connected to database "lecture" as user "postgres".
+lecture=# CREATE TABLE USERDATA (FNAME VARCHAR NOT NULL , LNAME VARCHAR NOT NULL , EMAIL TEXT NOT NULL ,USERNAME VARCHAR NOT NULL UNIQUE , PASSWORD TEXT NOT NULL);
+lecture=# CREATE TABLE BOOKS (ISBN VARCHAR NOT NULL UNIQUE,TITLE VARCHAR NOT NULL,AUTHOR VARCHAR NOT NULL,PUBYEAR INTEGER NOT NULL);
+lecture=# CREATE TABLE BOOK_RATING(ISBN VARCHAR NOT NULL ,USERNAME VARCHAR NOT NULL ,RATING INTEGER NOT NULL);
+lecture=# CREATE TABLE BOOK_REVIEW(ISBN VARCHAR NOT NULL,USERNAME VARCHAR NOT NULL,REVIEW TEXT NOT NULL);
+
 ```
 -----------------------------------------------------------------
 
 #### Step 7:Upload Refrence data in table 'BOOKS' created in step 6
 
 There is a file name as ‘book.csv’ in project folder you need to upload data of that csv in ‘BOOKS’ table you create in postgres
+
 ```bash
 sudo -u postgres psql
  
