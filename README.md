@@ -1,5 +1,9 @@
 #### Step 1 - Setup git and Clone 
 
+### Use below image for installation:
+
+![Screenshot](screenshot.png)
+
 ```bash
 1) sudo yum install git
 2) git init
