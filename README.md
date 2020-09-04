@@ -19,7 +19,7 @@ http://18.202.212.88/
 
 ```bash
 1)	sudo yum install httpd
-2)	sudo yum install mod_wsgi
+2)	sudo yum install mod_wsgi-python27.x86_64
 ---------------------------
 ```
 
