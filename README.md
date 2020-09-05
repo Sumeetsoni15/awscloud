@@ -147,7 +147,15 @@ lecture-#
 
 DONE!!!!!!!!
 
+###Monitoring Solutions!!
 
+####This is just for reference - Monitoring solution PS-3
+
+### Use below image for installation:
+
+![Screenshot](RDS-Monitoring-Summary.png)
+
+![Screenshot](monitoring-overviewpage-console.png)
 
 
 
